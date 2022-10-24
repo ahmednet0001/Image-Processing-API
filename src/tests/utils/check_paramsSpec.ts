@@ -2,7 +2,7 @@ import IsValid from '../../utils/check_params';
 describe('Validation params', () => {
   it('valid params', () => {
     const validParam = {
-      name: 'image',
+      filename: 'image',
       width: '200',
       height: '200',
     };
@@ -10,7 +10,7 @@ describe('Validation params', () => {
   });
   it('invalid params', () => {
     const invalidParam = {
-      name: '',
+      filename: '',
       width: '',
       height: '',
     };
@@ -18,7 +18,7 @@ describe('Validation params', () => {
   });
   it('invalid params', () => {
     const invalidParam = {
-      name: 'image',
+      filename: 'image',
     };
     expect(IsValid(invalidParam)).toBe(false);
   });

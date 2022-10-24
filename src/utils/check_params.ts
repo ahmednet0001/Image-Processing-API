@@ -11,14 +11,11 @@ function IsValid(query: any): boolean {
   if (!filename) return false;
   if (!width) return false;
   if (!height) return false;
-  // Check if name param
-
+  // Check  filename param
   if (validator.isEmpty(filename)) return false;
-  // Check if width param
-
+  // Check  width param
   if (validator.isEmpty(width) || !validator.isNumeric(width)) return false;
-  // Check if height param
-
+  // Check  height param
   if (validator.isEmpty(height) || !validator.isNumeric(height)) return false;
 
   return true;
