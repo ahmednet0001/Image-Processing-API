@@ -24,7 +24,7 @@ const app = (0, express_1.default)();
 const port = process.env.PORT;
 app.get('/image', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     if ((0, check_params_1.default)(req.query) === false) {
-        res.send('Invalid params');
+        res.send('Error : Invalid url params').status(404);
         return;
     }
     // If valid params create param model 
@@ -32,7 +32,7 @@ app.get('/image', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     // Check file exist
     let exist = yield (0, check_file_exist_1.default)(queryParams.filename);
     if (!exist) {
-        res.send('Image not exist ');
+        res.send('Error  : Image not exist ').status(404);
         return;
     }
     // Check thumbnail exist

@@ -1,12 +1,13 @@
 import validator from 'validator';
+import {  Request } from 'express';
 
-function IsValid(query: any): boolean {
+function IsValid(req: Request) {
   // Check if query exist
-  if (!query) return false;
+  if (!req.query) return false;
   // Fetch params
-  const filename = query.filename;
-  const width = query.width;
-  const height = query.height;
+  const filename = req.query.filename as string;
+  const width = req.query.width as string;
+  const height = req.query.height as string;
   // Check if undefined param
   if (!filename) return false;
   if (!width) return false;

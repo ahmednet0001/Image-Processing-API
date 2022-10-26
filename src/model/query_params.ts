@@ -1,5 +1,3 @@
-import { stringify } from 'querystring';
-
 class QueryParams {
   readonly filename: string;
   readonly width: string;
@@ -11,7 +9,7 @@ class QueryParams {
     this.height = height;
   }
   getThumbStr(): string {
-    let thumbName: string = '';
+    let thumbName = '';
     thumbName += this.filename;
     thumbName += '_';
     thumbName += this.width;
