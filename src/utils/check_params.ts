@@ -1,7 +1,7 @@
 import validator from 'validator';
 import Query from '../model/query';
 
-function IsValid(query: Query) {
+function IsValid(query: Query): boolean {
   // Fetch params
   const filename = query.filename as string;
   const width = query.width as string;

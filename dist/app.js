@@ -29,7 +29,9 @@ app.get('/image', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         height: req.query.height,
     };
     if (!req.query || (0, check_params_1.default)(query) === false) {
-        res.send('Error : Invalid url params').status(404);
+        let msg = ' <br />Missing   param : [filename, height or width]<br />';
+        msg += 'or invalid param value';
+        res.send(`Error : ${msg}`).status(404);
         return;
     }
     // If valid params create param model
@@ -44,7 +46,8 @@ app.get('/image', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     exist = yield (0, check_file_exist_1.default)(queryParams.getThumbStr(), true);
     if (!exist) {
         // Create thumbnail
-        yield (0, create_thumb_1.default)(queryParams);
+        const x = yield (0, create_thumb_1.default)(queryParams);
+        console.log(typeof x);
     }
     // Get thumbnail to response
     const x = path_1.default.join(__dirname + '/assets/thumb/' + queryParams.getThumbStr() + '.jpg');

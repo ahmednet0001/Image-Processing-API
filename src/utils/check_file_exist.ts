@@ -1,6 +1,6 @@
 import path from 'path';
 import { promises as Fs } from 'fs';
-async function FileExists(filename: string, thumb = false) {
+async function FileExists(filename: string, thumb = false): Promise<boolean> {
   // Determine path full or thumb
   const file = !thumb
     ? path.join(__dirname + '\\..\\/assets/full/' + filename + '.jpg')

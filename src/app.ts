@@ -19,7 +19,10 @@ app.get('/image', async (req: Request, res: Response) => {
     height: req.query.height as string,
   };
   if (!req.query || IsValid(query) === false) {
-    res.send('Error : Invalid url params').status(404);
+    let msg = ' <br />Missing   param : [filename, height or width]<br />';
+    msg += 'or invalid param value';
+
+    res.send(`Error : ${msg}`).status(404);
     return;
   }
   // If valid params create param model
@@ -39,7 +42,8 @@ app.get('/image', async (req: Request, res: Response) => {
   exist = await FileExists(queryParams.getThumbStr(), true);
   if (!exist) {
     // Create thumbnail
-    await CreateThumb(queryParams);
+    const x = await CreateThumb(queryParams);
+    console.log(typeof x);
   }
   // Get thumbnail to response
   const x = path.join(
