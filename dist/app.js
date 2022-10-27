@@ -23,11 +23,16 @@ dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT;
 app.get('/image', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    if ((0, check_params_1.default)(req.query) === false) {
+    const query = {
+        filename: req.query.filename,
+        width: req.query.width,
+        height: req.query.height,
+    };
+    if (!req.query || (0, check_params_1.default)(query) === false) {
         res.send('Error : Invalid url params').status(404);
         return;
     }
-    // If valid params create param model 
+    // If valid params create param model
     const queryParams = new query_params_1.default(req.query.filename, req.query.width, req.query.height);
     // Check file exist
     let exist = yield (0, check_file_exist_1.default)(queryParams.filename);

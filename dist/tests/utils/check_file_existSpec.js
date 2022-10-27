@@ -15,12 +15,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const check_file_exist_1 = __importDefault(require("../../utils/check_file_exist"));
 describe('File exist', () => {
     it('Existing file', () => __awaiter(void 0, void 0, void 0, function* () {
-        const filename = "encenadaport";
+        const filename = 'encenadaport';
         const result = yield (0, check_file_exist_1.default)(filename);
         expect(result).toBeTrue();
     }));
     it('file not found', () => __awaiter(void 0, void 0, void 0, function* () {
-        const filename = "random";
+        const filename = 'random';
         const result = yield (0, check_file_exist_1.default)(filename);
         expect(result).toBeFalse();
     }));

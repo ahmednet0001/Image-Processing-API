@@ -5,6 +5,7 @@ import QueryParams from './model/query_params';
 import IsValid from './utils/check_params';
 import FileExists from './utils/check_file_exist';
 import CreateThumb from './utils/create_thumb';
+import Query from './model/query';
 
 dotenv.config();
 
@@ -12,7 +13,12 @@ const app: Express = express();
 const port = process.env.PORT;
 
 app.get('/image', async (req: Request, res: Response) => {
-  if (IsValid(req) === false) {
+  const query: Query = {
+    filename: req.query.filename as string,
+    width: req.query.width as string,
+    height: req.query.height as string,
+  };
+  if (!req.query || IsValid(query) === false) {
     res.send('Error : Invalid url params').status(404);
     return;
   }

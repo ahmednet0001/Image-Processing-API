@@ -1,7 +1,8 @@
+import Query from '../../model/query';
 import IsValid from '../../utils/check_params';
 describe('Validation params', () => {
   it('valid params', () => {
-    const validParam = {
+    const validParam: Query = {
       filename: 'image',
       width: '200',
       height: '200',
@@ -9,7 +10,7 @@ describe('Validation params', () => {
     expect(IsValid(validParam)).toBe(true);
   });
   it('invalid params', () => {
-    const invalidParam = {
+    const invalidParam: Query = {
       filename: '',
       width: '',
       height: '',
@@ -17,13 +18,9 @@ describe('Validation params', () => {
     expect(IsValid(invalidParam)).toBe(false);
   });
   it('invalid params', () => {
-    const invalidParam = {
+    const invalidParam: Query = {
       filename: 'image',
     };
-    expect(IsValid(invalidParam)).toBe(false);
-  });
-  it('invalid params', () => {
-    const invalidParam = undefined;
     expect(IsValid(invalidParam)).toBe(false);
   });
 });

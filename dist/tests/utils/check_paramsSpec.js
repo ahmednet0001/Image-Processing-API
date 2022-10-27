@@ -27,8 +27,4 @@ describe('Validation params', () => {
         };
         expect((0, check_params_1.default)(invalidParam)).toBe(false);
     });
-    it('invalid params', () => {
-        const invalidParam = undefined;
-        expect((0, check_params_1.default)(invalidParam)).toBe(false);
-    });
 });

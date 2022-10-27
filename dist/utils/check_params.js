@@ -5,9 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const validator_1 = __importDefault(require("validator"));
 function IsValid(query) {
-    // Check if query exist
-    if (!query)
-        return false;
     // Fetch params
     const filename = query.filename;
     const width = query.width;

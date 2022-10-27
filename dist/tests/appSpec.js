@@ -17,13 +17,13 @@ const app_1 = __importDefault(require("../app"));
 const request = (0, supertest_1.default)(app_1.default);
 describe('Test endpoint responses', () => {
     it('gets the api endpoint', () => __awaiter(void 0, void 0, void 0, function* () {
-        const response = yield request.get("/image");
+        const response = yield request.get('/image');
         expect(response.status).toBe(200);
     }));
 });
 describe('Test endpoint 404', () => {
     it('gets the api endpoint 404', () => __awaiter(void 0, void 0, void 0, function* () {
-        const response = yield request.get("/convert");
+        const response = yield request.get('/convert');
         expect(response.status).toBe(404);
     }));
 });
