@@ -43,7 +43,7 @@ app.get('/image', async (req: Request, res: Response) => {
   exist = await FileExists(queryParams.getThumbStr(), true);
   if (!exist) {
     // Create thumbnail
-     await CreateThumb(queryParams);
+    await CreateThumb(queryParams);
   }
   // Get thumbnail to response
   const image = path.join(
