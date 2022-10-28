@@ -14,12 +14,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const path_1 = __importDefault(require("path"));
 const fs_1 = require("fs");
+const directory_constant_1 = require("../directory_constant");
 function FileExists(filename, thumb = false) {
     return __awaiter(this, void 0, void 0, function* () {
         // Determine path full or thumb
         const file = !thumb
-            ? path_1.default.join(__dirname + '\\..\\/assets/full/' + filename + '.jpg')
-            : path_1.default.join(__dirname + '\\..\\/assets/thumb/' + filename + '.jpg');
+            ? path_1.default.join(directory_constant_1.ASSETS_FULL_PATH + filename + '.jpg')
+            : path_1.default.join(directory_constant_1.ASSETS_THUMB_PATH + filename + '.jpg');
         try {
             yield fs_1.promises.access(file);
             return true;

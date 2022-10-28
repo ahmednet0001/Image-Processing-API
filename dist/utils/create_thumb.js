@@ -13,13 +13,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sharp_1 = __importDefault(require("sharp"));
+const directory_constant_1 = require("../directory_constant");
 function CreateThumb(params) {
     return __awaiter(this, void 0, void 0, function* () {
         // Configuring Preview Image
-        return yield (0, sharp_1.default)(__dirname + '\\..\\/assets/full/' + params.filename + '.jpg')
+        return yield (0, sharp_1.default)(directory_constant_1.ASSETS_FULL_PATH + params.filename + '.jpg')
             .resize(Number(params.width), Number(params.height))
             .jpeg({ quality: 80 })
-            .toFile(__dirname + '\\..\\/assets/thumb/' + params.getThumbStr() + '.jpg');
+            .toFile(directory_constant_1.ASSETS_THUMB_PATH + params.getThumbStr() + '.jpg');
     });
 }
 exports.default = CreateThumb;

@@ -19,6 +19,7 @@ const query_params_1 = __importDefault(require("./model/query_params"));
 const check_params_1 = __importDefault(require("./utils/check_params"));
 const check_file_exist_1 = __importDefault(require("./utils/check_file_exist"));
 const create_thumb_1 = __importDefault(require("./utils/create_thumb"));
+const directory_constant_1 = require("./directory_constant");
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT;
@@ -46,12 +47,11 @@ app.get('/image', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     exist = yield (0, check_file_exist_1.default)(queryParams.getThumbStr(), true);
     if (!exist) {
         // Create thumbnail
-        const x = yield (0, create_thumb_1.default)(queryParams);
-        console.log(typeof x);
+        yield (0, create_thumb_1.default)(queryParams);
     }
     // Get thumbnail to response
-    const x = path_1.default.join(__dirname + '/assets/thumb/' + queryParams.getThumbStr() + '.jpg');
-    res.sendFile(x);
+    const image = path_1.default.join(directory_constant_1.ASSETS_THUMB_PATH + queryParams.getThumbStr() + '.jpg');
+    res.sendFile(image);
 }));
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`);

@@ -6,6 +6,7 @@ import IsValid from './utils/check_params';
 import FileExists from './utils/check_file_exist';
 import CreateThumb from './utils/create_thumb';
 import Query from './model/query';
+import { ASSETS_THUMB_PATH } from './directory_constant';
 
 dotenv.config();
 
@@ -42,14 +43,13 @@ app.get('/image', async (req: Request, res: Response) => {
   exist = await FileExists(queryParams.getThumbStr(), true);
   if (!exist) {
     // Create thumbnail
-    const x = await CreateThumb(queryParams);
-    console.log(typeof x);
+     await CreateThumb(queryParams);
   }
   // Get thumbnail to response
-  const x = path.join(
-    __dirname + '/assets/thumb/' + queryParams.getThumbStr() + '.jpg'
+  const image = path.join(
+    ASSETS_THUMB_PATH + queryParams.getThumbStr() + '.jpg'
   );
-  res.sendFile(x);
+  res.sendFile(image);
 });
 
 app.listen(port, () => {
